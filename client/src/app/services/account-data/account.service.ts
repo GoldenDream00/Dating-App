@@ -7,16 +7,15 @@ import { User } from './models/user';
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = 'https://localhost:5001/api/'
+  baseUrl = 'https://localhost:5001/api'
   private currentUserSource = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
   login(model: User) {
-    return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
-      map((response: User) => {
-        const user = response;
+    return this.http.post<User>(`${this.baseUrl}/account/login`, model).pipe(
+      map((user: User) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
@@ -27,6 +26,17 @@ export class AccountService {
   logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
+  }
+
+  register(model: any) {
+    return this.http.post<User>(`${this.baseUrl}/account/register`, model).pipe(
+      map((user: User) => {
+        if(user) {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.currentUserSource.next(user);
+        }
+      })
+    )
   }
 
   setCurrentUser(user: User) {
