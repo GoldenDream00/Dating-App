@@ -5,13 +5,20 @@ import { MemberListComponent } from './modules/members/member-list/member-list.c
 import { MemberDetailComponent } from './modules/members/member-detail/member-detail.component';
 import { ListsComponent } from './modules/lists/lists.component';
 import { MessagesComponent } from './modules/messages/messages.component';
+import { isLoggedIn } from './guards/auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'members', component: MemberListComponent},
-  {path: 'members/:id', component: MemberDetailComponent},
-  {path: 'lists', component: ListsComponent},
-  {path: 'messages', component: MessagesComponent},
+  {path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [isLoggedIn],
+    children: [
+      {path: 'members', component: MemberListComponent, canActivate: [isLoggedIn]},
+      {path: 'members/:id', component: MemberDetailComponent},
+      {path: 'lists', component: ListsComponent},
+      {path: 'messages', component: MessagesComponent},
+    ]
+},
   {path: '**', component: MessagesComponent},
 ];
 
