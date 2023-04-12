@@ -31,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
     BsDropdownModule,
     BrowserAnimationsModule,
     ToastrModule,
+    RouterModule,
   ]
 })
 export class SharedModule { }

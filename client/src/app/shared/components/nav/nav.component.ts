@@ -28,8 +28,7 @@ export class NavComponent implements OnInit{
     this.model.password = this.formGroup.get("password")?.value;
     this.model.username = this.formGroup.get("username")?.value;
     this.accountService.login(this.model).subscribe({
-      next: _ => this.router.navigateByUrl('/members'),
-      error: (error) => this.toastr.error(error.error)
+      next: _ => this.router.navigateByUrl('/members')
     })
   }
 
