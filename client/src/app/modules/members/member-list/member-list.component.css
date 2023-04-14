@@ -1,0 +1,8 @@
+.col {
+    max-width: 200px;
+}
+
+.member-list {
+    gap: 20px;
+    justify-content: center;
+}

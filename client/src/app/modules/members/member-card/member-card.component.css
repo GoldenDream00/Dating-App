@@ -1,0 +1,67 @@
+.card {
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 200px;
+    align-items: center;
+    text-align: center;
+    height: 300px;
+}
+
+.card__profile-img {
+    width: 128px;
+    height: 128px;
+    margin-bottom: 20px;
+}
+
+.card__profile-img img {
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 100%; 
+}
+
+.card__profile-img img:hover {
+    transform: scale(1.1, 1.1);
+    transition: ease-out 500ms;
+    opacity: 0.8;   
+}
+
+.card__profile-name {
+    font-size: 1.3rem;
+}
+
+.card__profile-city {
+    color: #455a64;
+    font-weight: 400
+}
+
+.card__socials {
+    padding-left: 0;
+    list-style: none;
+}
+
+.card__socials li {
+    display: inline-block;
+    padding: 0 8px
+}
+
+.card__socials li i:hover {
+    transform: scale(1.2, 1.2);
+    transition: ease-out 500ms;
+}
+
+.text-facebook {
+    color: #3b5998 !important
+}
+
+.text-twitter {
+    color: #00aced !important
+}
+
+.text-linkedin {
+    color: #0077B5 !important
+}
+
+.text-instagram {
+    color: #E1306C !important
+}
