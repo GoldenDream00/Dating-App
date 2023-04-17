@@ -38,7 +38,19 @@ namespace API.Data.Migrations
                 defaultValue: new DateOnly(1, 1, 1));
 
             migrationBuilder.AddColumn<string>(
+                name: "FacebookUrl",
+                table: "Users",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
                 name: "Gender",
+                table: "Users",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "InstagramUrl",
                 table: "Users",
                 type: "TEXT",
                 nullable: true);
@@ -69,7 +81,19 @@ namespace API.Data.Migrations
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<string>(
+                name: "LinkedInUrl",
+                table: "Users",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
                 name: "LookingFor",
+                table: "Users",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "TwitterUrl",
                 table: "Users",
                 type: "TEXT",
                 nullable: true);
@@ -125,7 +149,15 @@ namespace API.Data.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
+                name: "FacebookUrl",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
                 name: "Gender",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "InstagramUrl",
                 table: "Users");
 
             migrationBuilder.DropColumn(
@@ -145,7 +177,15 @@ namespace API.Data.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
+                name: "LinkedInUrl",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
                 name: "LookingFor",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "TwitterUrl",
                 table: "Users");
         }
     }

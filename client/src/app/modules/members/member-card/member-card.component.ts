@@ -11,6 +11,7 @@ export class MemberCardComponent {
   set member(member: Member){
    if (member) {
      this._member = member;
+     console.log(this._member);
    }
   }
   get member(){
@@ -18,4 +19,15 @@ export class MemberCardComponent {
   }
 
   _member!: Member;
+
+  constructor() {
+    this.imprime();
+  }
+
+  imprime(){
+    
+  }
+
+  
+  
 }

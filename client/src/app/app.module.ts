@@ -10,6 +10,7 @@ import { MessagesModule } from './modules/messages/messages.module';
 import { ListsModule } from './modules/lists/lists.module';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ErrorsModule } from './modules/errors/errors.module';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ErrorsModule } from './modules/errors/errors.module';
     ErrorsModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

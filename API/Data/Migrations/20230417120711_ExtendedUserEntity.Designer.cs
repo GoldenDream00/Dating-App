@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230413141204_ExtendedUserEntity")]
+    [Migration("20230417120711_ExtendedUserEntity")]
     partial class ExtendedUserEntity
     {
         /// <inheritdoc />
@@ -38,7 +38,13 @@ namespace API.Data.Migrations
                     b.Property<DateOnly>("DateOfBirth")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("FacebookUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Gender")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("InstagramUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Interests")
@@ -53,6 +59,9 @@ namespace API.Data.Migrations
                     b.Property<DateTime>("LastActive")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("LinkedInUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("LookingFor")
                         .HasColumnType("TEXT");
 
@@ -61,6 +70,9 @@ namespace API.Data.Migrations
 
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("BLOB");
+
+                    b.Property<string>("TwitterUrl")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")
                         .HasColumnType("TEXT");

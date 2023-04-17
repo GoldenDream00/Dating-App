@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <div class="card__profile-img">
+        <div class="card__profile-img text-center">
             <img src="{{member.photoUrl}}" alt="Photo of {{member.knownAs}}">
         </div>
         <h3 class="card__profile-name">
@@ -10,11 +10,23 @@
         <h6 class="card__profile-city text-muted mt-20">
             {{member.city}}
         </h6>
-        <ul class="card__socials">
-            <li><a href=""><i class="fa fa-twitter text-twitter"></i></a></li>
-            <li><a href=""><i class="fa fa-facebook-f text-facebook"></i></a></li>
-            <li><a href=""><i class="fa fa-linkedin text-linkedin"></i></a></li>
-            <li><a href=""><i class="fa fa-instagram text-instagram"></i></a></li>
+        <ul class="card__socials list-inline">
+            <li class="list-inline-item" *ngIf="member.twitterUrl"><a href="{{member.twitterUrl}}"><i class="fa fa-twitter text-twitter"></i></a></li>
+            <li class="list-inline-item" *ngIf="member.facebookUrl"><a href="{{member.facebookUrl}}"><i class="fa fa-facebook-f text-facebook"></i></a></li>
+            <li class="list-inline-item" *ngIf="member.linkedInUrl"><a href="{{member.linkedInUrl}}"><i class="fa fa-linkedin text-linkedin"></i></a></li>
+            <li class="list-inline-item" *ngIf="member.instagramUrl"><a href="{{member.instagramUrl}}"><i class="fa fa-instagram text-instagram"></i></a></li>
+        </ul>
+        <ul class="card__buttons list-inline text-center">
+            <li class="list-inline-item card__button">
+                <button routerLink="/members/{{member.userName}}" class="btn btn-primary"><i class="fa fa-user"></i></button>
+            </li>
+            <li class="list-inline-item card__button">
+                <button class="btn btn-primary"><i class="fa fa-envelope"></i></button>
+            </li>
+            <li class="list-inline-item card__button">
+                <button class="btn btn-primary tex"><i class="fa fa-heart"></i></button>
+            </li>
+            
         </ul>
     </div>
 </div>

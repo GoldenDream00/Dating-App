@@ -15,6 +15,10 @@ namespace API.DTOs
         public string Interests { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public string InstagramUrl { get; set; }
+        public string TwitterUrl { get; set; }
+        public string FacebookUrl { get; set; }
+        public string LinkedInUrl { get; set; }
         public List<PhotoDto> Photos { get; set; } = new List<PhotoDto>();
     }
 }

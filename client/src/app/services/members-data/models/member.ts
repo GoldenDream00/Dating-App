@@ -14,6 +14,10 @@ export interface Member {
     interests: string
     city: string
     country: string
+    instagramUrl?: string;
+    twitterUrl?: string;
+    facebookUrl?: string;
+    linkedInUrl?: string;
     photos: Photo[]
 }
 

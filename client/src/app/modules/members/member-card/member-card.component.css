@@ -2,15 +2,16 @@
     -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    width: 200px;
+    height: 100%;
     align-items: center;
     text-align: center;
-    height: 300px;
+
 }
 
 .card__profile-img {
     width: 128px;
     height: 128px;
+    margin: 0 auto;
     margin-bottom: 20px;
 }
 
@@ -38,6 +39,7 @@
 .card__socials {
     padding-left: 0;
     list-style: none;
+    height: 20px;
 }
 
 .card__socials li {
@@ -64,4 +66,8 @@
 
 .text-instagram {
     color: #E1306C !important
+}
+
+.card__button button{
+    width: 40px;
 }
