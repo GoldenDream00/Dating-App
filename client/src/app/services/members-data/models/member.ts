@@ -18,6 +18,6 @@ export interface Member {
     twitterUrl?: string;
     facebookUrl?: string;
     linkedInUrl?: string;
-    photos: Photo[]
+    photos: Photo[];
 }
 

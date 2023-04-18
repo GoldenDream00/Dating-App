@@ -10,6 +10,7 @@ import { Member } from 'src/app/services/members-data/models/member';
 })
 export class MemberDetailComponent implements OnInit {
   member!: Member;
+  hasSocials = false;
 
   constructor(private memberService: MembersService, private route: ActivatedRoute) {}
   
@@ -21,7 +22,11 @@ export class MemberDetailComponent implements OnInit {
     const username = this.route.snapshot.paramMap.get('username');
     if(!username) return
     this.memberService.getMember(username).subscribe({
-      next: member => this.member = member
+      next: member => {
+        this.member = member;
+        this.hasSocials = !!member.instagramUrl || !!member.linkedInUrl || !!member.twitterUrl || !!member.facebookUrl;
+
+      }
     })
   }
   

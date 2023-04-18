@@ -1,0 +1,47 @@
+.img-thumbnail {
+    margin: 25px;
+    width: 85%;
+    height: 85%;
+}
+
+.card-body {
+    padding: 0 25px;
+}
+
+.card-footer {
+    padding: 10px 15px;
+}
+
+.card__socials {
+    padding-left: 0;
+    list-style: none;
+    height: 20px;
+}
+
+.card__socials li {
+    display: inline-block;
+    padding: 0 8px
+}
+
+.card__socials li i:hover {
+    transform: scale(1.2, 1.2);
+    transition: ease-out 500ms;
+}
+
+.text-facebook {
+    color: #3b5998 !important
+}
+
+.text-twitter {
+    color: #00aced !important
+}
+
+.text-linkedin {
+    color: #0077B5 !important
+}
+
+.text-instagram {
+    color: #E1306C !important
+}
+
+

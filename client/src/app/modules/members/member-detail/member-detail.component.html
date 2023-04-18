@@ -1,1 +1,63 @@
-<h1>{{member.knownAs}}</h1>
+<div class="row" *ngIf="member">
+    <div class="col-4 card member__card">
+        <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" srcset=""
+            class="card-img-top img-thumbnail">
+        <div class="card-body">
+            <div>
+                <strong>Location:</strong>
+                <p>{{member.city}}, {{member.country}}</p>
+            </div>
+            <div>
+                <strong>Age:</strong>
+                <p>{{member.age}}</p>
+            </div>
+            <div>
+                <strong>Last Acitve:</strong>
+                <p>{{member.lastActive}}</p>
+            </div>
+            <div>
+                <strong>Member Since:</strong>
+                <p>{{member.created}}</p>
+            </div>
+            <div *ngIf="hasSocials">
+                <strong>Socials:</strong>
+                <ul class="card__socials list-inline">
+                    <li class="list-inline-item" *ngIf="member.twitterUrl"><a href="{{member.twitterUrl}}"><i
+                                class="fa fa-twitter text-twitter"></i></a></li>
+                    <li class="list-inline-item" *ngIf="member.facebookUrl"><a href="{{member.facebookUrl}}"><i
+                                class="fa fa-facebook-f text-facebook"></i></a></li>
+                    <li class="list-inline-item" *ngIf="member.linkedInUrl"><a href="{{member.linkedInUrl}}"><i
+                                class="fa fa-linkedin text-linkedin"></i></a></li>
+                    <li class="list-inline-item" *ngIf="member.instagramUrl"><a href="{{member.instagramUrl}}"><i
+                                class="fa fa-instagram text-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group d-flex">
+                <button class="btn btn-primary">Like</button>
+                <button class="btn btn-success">Message</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <tabset class="member-tabset">
+            <tab heading="About {{member.knownAs}}">
+                <h4>Description</h4>
+                <p>{{member.introduction}}</p>
+                <h4>Description</h4>
+                <p>{{member.introduction}}</p>
+            </tab>
+            <tab heading="Interests">
+                <h4>Interests</h4>
+                <p>{{member.interests}}</p>
+            </tab>
+            <tab heading="Photos">
+            </tab>
+            <tab heading="Messages">
+            </tab>
+        </tabset>
+    </div>
+</div>
