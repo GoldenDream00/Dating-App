@@ -6,7 +6,7 @@
 
 .nav-tabs>li.open,
 .member-tabset>.nav-tabs>li:hover {
-    border-bottom: 4px solid #fbcdcf;
+    border-bottom: 4px solid #18bc962d;
 }
 
 .member-tabset>.nav-tabs>li.open>a,
@@ -27,13 +27,14 @@
 }
 
 .member-tabset>.nav-tabs>li.active {
-    border-bottom: 4px solid #E95420;
+    border-bottom: 4px solid #18BC95;
     position: relative;
 }
 
 .member-tabset>.nav-tabs>li.active>a {
     border: 0 !important;
     color: #333333;
+    font-weight: 600;
 }
 
 .member-tabset>.nav-tabs>li.active>a>i {
@@ -46,4 +47,8 @@
     border: 0;
     border-top: 1px solid #eee;
     padding: 15px 0;
+}
+
+.nav-tabs {
+    --bs-nav-tabs-border-width: 0px;
 }

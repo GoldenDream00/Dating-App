@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "hammerjs": "^2.0.8",
+    "ngx-gallery": "^5.10.0"
+  }
+}

@@ -26,7 +26,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     MembersModule,
     MessagesModule,
     ListsModule,
-    ErrorsModule
+    ErrorsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

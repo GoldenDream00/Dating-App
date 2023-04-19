@@ -5,7 +5,6 @@ import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberCardComponent } from './member-card/member-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
 @NgModule({
   declarations: [
     MemberListComponent,
@@ -14,7 +13,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    
   ],
   exports: [
     MemberDetailComponent,
