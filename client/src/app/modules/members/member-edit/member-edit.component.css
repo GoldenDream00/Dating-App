@@ -1,0 +1,26 @@
+.img-thumbnail {
+    margin: 25px;
+    width: 85%;
+    height: auto;
+}
+
+.card-body {
+    padding: 0 25px;
+}
+
+.card-footer {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+
+.member__card {
+    max-height: 800px;
+    height: auto;
+}
+
+.btn.btn-success[disabled] {
+    background-color: #535353;
+    border: #535353;
+}
+
+.ngx-gallery { display: inline-block; margin-bottom: 20px; }

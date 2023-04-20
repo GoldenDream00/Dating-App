@@ -9,6 +9,8 @@ import { isLoggedIn } from './guards/auth.guard';
 import { TestErrorComponent } from './modules/errors/test-error/test-error.component';
 import { NotFoundComponent } from './modules/errors/not-found/not-found.component';
 import { ServerErrorComponent } from './modules/errors/server-error/server-error.component';
+import { MemberEditComponent } from './modules/members/member-edit/member-edit.component';
+import { preventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +20,7 @@ const routes: Routes = [
     children: [
       {path: 'members', component: MemberListComponent, canActivate: [isLoggedIn]},
       {path: 'members/:username', component: MemberDetailComponent},
+      {path: 'member/edit', component: MemberEditComponent, canDeactivate: [preventUnsavedChanges]},
       {path: 'lists', component: ListsComponent},
       {path: 'messages', component: MessagesComponent},
     ]

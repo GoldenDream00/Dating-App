@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/services/account-data/account.service';
@@ -11,17 +11,20 @@ import { AccountService } from 'src/app/services/account-data/account.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit{
-  model: any = {}
+  model: any = {};
+  formGroup!: FormGroup;
 
-  formGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
-  });
-
-  constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) {}
+  constructor(private formBuilder: FormBuilder, public accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
+    this.formGroup = this.initializeFormGroup();
+  }
 
+  initializeFormGroup() {
+    return this.formBuilder.group({
+      username: [{value: null, disabled:false}],
+      password: [{value: null, disabled:false}]
+    })
   }
 
   login(){

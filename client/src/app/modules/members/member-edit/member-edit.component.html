@@ -1,0 +1,74 @@
+<div class="row" *ngIf="member">
+    <div class="col-4">
+        <h1>Your Profile</h1>
+    </div>
+    <div class="col-8">
+        <div class="alert alert-info pb-1" *ngIf="formGroup.dirty">
+            <p><strong>Information: </strong>You've made changes. Any unsaved changes will be lost!'</p>
+        </div>
+    </div>
+    <div class="col-4 card member__card">
+        <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" srcset=""
+            class="card-img-top img-thumbnail">
+        <div class="card-body">
+            <div>
+                <strong>Location:</strong>
+                <p>{{member.city}}, {{member.country}}</p>
+            </div>
+            <div>
+                <strong>Age:</strong>
+                <p>{{member.age}}</p>
+            </div>
+            <div>
+                <strong>Last Acitve:</strong>
+                <p>{{member.lastActive}}</p>
+            </div>
+            <div>
+                <strong>Member Since:</strong>
+                <p>{{member.created}}</p>
+            </div>
+            <div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button [disabled]="!formGroup.dirty" class="btn btn-success col-12" type="submit" form="editForm">Save Changes</button>
+        </div>
+    </div>
+    <div class="col-8">
+        <tabset class="member-tabset">
+            <tab heading="About {{member.knownAs}}">
+                <form [formGroup]="formGroup" id="editForm" (ngSubmit)="updateMember()" #editForm="ngForm">
+                    <h4 class="my-3">Introduction</h4>
+                    <textarea class="form-control" formControlName="introduction" rows="6"></textarea>
+                    <h4 class="my-3">Looking For</h4>
+                    <textarea class="form-control" formControlName="lookingFor" rows="6"></textarea>
+                    <h4 class="my-3">Interests</h4>
+                    <textarea class="form-control" formControlName="interests" rows="6"></textarea>
+                    <h4 class="my-3">Location Details</h4>
+                    <div class="d-flex flex-row align-items-center">
+                        <label for="city">City: </label>
+                        <input type="text" formControlName="city" class="form-control mx-2">
+                        <label for="country">Country: </label>
+                        <input type="text" formControlName="country" class="form-control mx-2">
+                    </div>
+                    <h4 class="my-3">Socials</h4>
+                    <div class="d-flex flex-row align-items-center">
+                        <label for="city">Instagram: </label>
+                        <input type="text" name="city" formControlName="instagramUrl" class="form-control mx-2">
+                        <label for="country">Facebok: </label>
+                        <input type="text" name="country" formControlName="facebookUrl" class="form-control mx-2">
+                    </div>
+                    <div class="d-flex flex-row align-items-center my-3">
+                        <label for="city">LinkedIn: </label>
+                        <input type="text" name="city" formControlName="instagramUrl" class="form-control mx-2">
+                        <label for="country">Twitter: </label>
+                        <input type="text" name="country" formControlName="facebookUrl" class="form-control mx-2">        
+                    </div>
+                </form>
+            </tab>
+            <tab heading="Photos">
+                <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery> -->
+            </tab>
+        </tabset>
+    </div>
+</div>

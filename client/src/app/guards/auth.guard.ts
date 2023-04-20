@@ -16,6 +16,5 @@ export const isLoggedIn: CanActivateFn = () => {
           return false;
         }
       }) 
-    );
-  
+    ); 
 }

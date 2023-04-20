@@ -4,12 +4,14 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberCardComponent } from './member-card/member-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MemberEditComponent } from './member-edit/member-edit.component';
 
 @NgModule({
   declarations: [
     MemberListComponent,
     MemberDetailComponent,
     MemberCardComponent,
+    MemberEditComponent,
   ],
   imports: [
     CommonModule,
