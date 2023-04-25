@@ -5,6 +5,7 @@ import { MemberDetailComponent } from './member-detail/member-detail.component';
 import { MemberCardComponent } from './member-card/member-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MemberEditComponent } from './member-edit/member-edit.component';
+import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { MemberEditComponent } from './member-edit/member-edit.component';
     MemberDetailComponent,
     MemberCardComponent,
     MemberEditComponent,
+    PhotoEditorComponent,
   ],
   imports: [
     CommonModule,
