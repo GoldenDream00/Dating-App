@@ -25,7 +25,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
-            var users = await _userRepository.GetMembersAsync();
+            var users = await _userRepository.GetMembersAsync(User.GetUsername());
             return Ok(users);
 
         }
@@ -81,6 +81,52 @@ namespace API.Controllers
             
 
             return BadRequest();
+        }
+
+        [HttpPut("set-main-photo/{photoId}")]
+        public async Task<ActionResult> SetMainPhoto(int photoId)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            if (user == null) return NotFound();
+
+            var photo = user.Photos.FirstOrDefault((photo) => photo.Id == photoId);
+
+            if (photo == null) return NotFound();
+
+            if (photo.isMain) return BadRequest("This is already your main photo");
+
+            var currentMain = user.Photos.FirstOrDefault(photo => photo.isMain);
+            if (currentMain != null) currentMain.isMain = false;
+            photo.isMain = true;
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Problem setting the main photo");
+ 
+        }
+
+        [HttpDelete("delete-photo/{photoId}")]
+        public async Task<ActionResult> DelePhoto(int photoId)
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+
+            if (photo == null) return NotFound();
+
+            if (photo.isMain) return BadRequest("You cannot delete your main photo");
+
+            if (photo.PublicId != null)
+            {
+                var result = await _photoService.DeletePhotoAsync(photo.PublicId);
+                if (result.Error != null) return BadRequest(result.Error.Message);
+            }
+
+            user.Photos.Remove(photo);
+
+            if (await _userRepository.SaveAllAsync()) return Ok();
+
+            return BadRequest("Problem deleting photo");
         }
     }
 

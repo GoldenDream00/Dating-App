@@ -3,7 +3,9 @@ import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs';
 import { AccountService } from 'src/app/services/account-data/account.service';
 import { User } from 'src/app/services/account-data/models/user';
+import { MembersService } from 'src/app/services/members-data/members.service';
 import { Member } from 'src/app/services/members-data/models/member';
+import { Photo } from 'src/app/services/members-data/models/photo';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -11,7 +13,7 @@ import { environment } from 'src/environments/environment.development';
   templateUrl: './photo-editor.component.html',
   styleUrls: ['./photo-editor.component.css']
 })
-export class PhotoEditorComponent implements OnInit{
+export class PhotoEditorComponent implements OnInit {
   @Input()
   member!: Member;
 
@@ -20,7 +22,8 @@ export class PhotoEditorComponent implements OnInit{
   baseUrl = environment.apiUrl;
   user!: User;
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService,
+    private memberService: MembersService) {
     accountService.currentUser$.pipe((take(1))).subscribe({
       next: user => {
         if (user) this.user = user;
@@ -36,6 +39,33 @@ export class PhotoEditorComponent implements OnInit{
     this.hasBaseDropZoneOver = e;
   }
 
+  setMainPhoto(photo: Photo) {
+    this.memberService.setMainPhoto(photo.id).subscribe({
+      next: () => {
+        if (this.user && this.member) {
+          this.user.photoUrl = photo.url;
+          this.accountService.setCurrentUser(this.user);
+          this.member.photoUrl = photo.url;
+          this.member.photos.forEach((p) => {
+            if (p.isMain) p.isMain = false;
+            if (p.id == photo.id) p.isMain = true;
+          })
+        }
+      }
+    })
+  }
+
+  deletePhoto(photo: Photo) {
+    this.memberService.deletePhoto(photo.id).subscribe({
+      next: () => {
+        if (this.user && this.member) {
+          this.member.photos = this.member.photos.filter((p) => p.id != photo.id);
+        }
+      }
+    })
+  }
+
+
   initializeUploader() {
     this.uploader = new FileUploader({
       url: this.baseUrl + "users/add-photo",
@@ -43,7 +73,7 @@ export class PhotoEditorComponent implements OnInit{
       isHTML5: true,
       allowedFileType: ['image'],
       removeAfterUpload: true,
-      autoUpload: true,
+      autoUpload: false,
       maxFileSize: 10 * 1024 * 1024
     });
 

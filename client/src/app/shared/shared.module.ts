@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -27,6 +28,7 @@ import { FileUploadModule } from 'ng2-file-upload';
       positionClass: 'toast-bottom-right'
     }),
     NgxGalleryModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     FileUploadModule
   ],
   exports: [
@@ -39,6 +41,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     RouterModule,
     TabsModule,
     NgxGalleryModule,
+    NgxSpinnerModule,
     FileUploadModule
   ]
 })
