@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/services/account-data/account.service';
 
@@ -20,18 +20,34 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(): void {
     this.formGroup = this.initializeFormGroup();
+    this.password?.valueChanges.subscribe({
+      next: () => this.formGroup.get('confirmPassword')?.updateValueAndValidity()
+    })
   }
 
   initializeFormGroup() {
     return this.formBuilder.group({
-      username: [{value: null, disabled:false}],
-      password: [{value: null, disabled:false}]
-    })
+      username: [{value: null, disabled:false}, Validators.required],
+      password: [{value: null, disabled:false}, [Validators.required, Validators.minLength(8)]],
+      confirmPassword : [{value: null, disabled:false}, [Validators.required, this.comparePasswords()]],
+    })   
+  }
+
+  get username() {
+    return this.formGroup.get('username');
+  }
+
+  get password() {
+    return this.formGroup.get('password');
+  }
+
+  get confirmPassword() {
+    return this.formGroup.get('confirmPassword');
   }
 
   register() {
-    this.model.username = this.formGroup.get("username")?.value;
-    this.model.password = this.formGroup.get("password")?.value;
+    this.model.username = this.username?.value;
+    this.model.password = this.password?.value;
     this.accountService.register(this.model).subscribe({
       next: (response) => {
         console.log(response);
@@ -45,4 +61,12 @@ export class RegisterComponent implements OnInit{
     this.cancelRegister.emit(false);
   }
 
+  comparePasswords(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const equals = this.password?.value == control.value;
+      return equals ? null : {notMatching: true};
+    };    
+  }
 }
+ 
+

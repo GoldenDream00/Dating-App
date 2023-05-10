@@ -10,12 +10,15 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { TextInputComponent } from './components/text-input/text-input.component';
+
 
 
 
 @NgModule({
   declarations: [
-    NavComponent
+    NavComponent,
+    TextInputComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     }),
     NgxGalleryModule,
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
-    FileUploadModule
+    FileUploadModule,  
   ],
   exports: [
     NavComponent,
@@ -42,7 +45,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     TabsModule,
     NgxGalleryModule,
     NgxSpinnerModule,
-    FileUploadModule
+    FileUploadModule,
+    TextInputComponent
   ]
 })
 export class SharedModule { }
