@@ -15,6 +15,8 @@
 }
 
 .card__profile-img img {
+    max-width: 100%;
+    max-height: 100%;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 100%; 

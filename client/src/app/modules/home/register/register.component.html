@@ -2,14 +2,33 @@
     <h2 class="text-center text-primary">Sign Up</h2>
     <hr>
     <app-text-input [formControl] = "$any(username)" [label]="'Username'" [type]="'text'"></app-text-input>
+    <app-text-input [formControl] = "$any(knownAs)" [label]="'Known As'" [type]="'text'"></app-text-input>
+    <app-date-picker [formControl] = "$any(dateOfBirth)" [label]="'Date Of Birth'"  [maxDate]="maxDate"></app-date-picker>
+    <div class="mb-3">
+        <label style="margin-right:10px">I am a:</label>
+        <label for="" class="form-check-label" style="margin-right:10px">
+            <input type="radio" class="form-check-input" value="male" formControlName="gender" style="margin-right:5px">Male
+        </label>
+        <label for="" class="form-check-label">
+            <input type="radio" class="form-check-input" value="female" formControlName="gender" style="margin-right:5px">Female
+        </label>
+    </div>
+    <app-text-input [formControl] = "$any(city)" [label]="'City'" [type]="'text'"></app-text-input>
+    <app-text-input [formControl] = "$any(country)" [label]="'Country'" [type]="'text'"></app-text-input>
     <app-text-input [formControl] = "$any(password)" [label]="'Password'" [type]="'password'"></app-text-input>
     <app-text-input [formControl] = "$any(confirmPassword)" [label]="'Confirm Password'" [type]="'password'"></app-text-input>
+    <div class="row" *ngIf="validationErrors">
+        <ul class="text-danger">
+            <li *ngFor="let error of validationErrors">
+                {{error}}
+            </li>
+        </ul>
+    </div>
     <div class="text-center">
         <button [disabled]="!formGroup.valid" class="btn btn-success me-2">Register</button>
         <button class="btn btn btn-danger" (click)="cancel()">Cancel</button>
     </div>
 </form>
 
-<p>Form Group: {{formGroup.get("confirmPassword")?.valid}}</p>
 
 

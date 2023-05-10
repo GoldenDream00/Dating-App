@@ -11,14 +11,16 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TextInputComponent } from './components/text-input/text-input.component';
-
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
 
 
 
 @NgModule({
   declarations: [
     NavComponent,
-    TextInputComponent
+    TextInputComponent,
+    DatePickerComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { TextInputComponent } from './components/text-input/text-input.component
     NgxGalleryModule,
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     FileUploadModule,  
+    BsDatepickerModule.forRoot()
   ],
   exports: [
     NavComponent,
@@ -46,7 +49,9 @@ import { TextInputComponent } from './components/text-input/text-input.component
     NgxGalleryModule,
     NgxSpinnerModule,
     FileUploadModule,
-    TextInputComponent
+    TextInputComponent,
+    BsDatepickerModule,
+    DatePickerComponent
   ]
 })
 export class SharedModule { }

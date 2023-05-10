@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         <div class="card__profile-img text-center">
-            <img src="{{member.photoUrl}}" alt="Photo of {{member.knownAs}}">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="Photo of {{member.knownAs}}">
         </div>
         <h3 class="card__profile-name">
             <i class="fa fa-user me-2"></i>

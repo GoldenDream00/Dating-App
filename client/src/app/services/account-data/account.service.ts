@@ -29,7 +29,7 @@ export class AccountService {
   }
 
   register(model: any) {
-    return this.http.post<User>(`${this.baseUrl}/account/register`, model).pipe(
+    return this.http.post<User>(`${this.baseUrl}account/register`, model).pipe(
       map((user: User) => {
         if(user) {
           this.setCurrentUser(user);
