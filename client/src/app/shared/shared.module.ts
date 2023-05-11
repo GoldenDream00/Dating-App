@@ -12,9 +12,8 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TextInputComponent } from './components/text-input/text-input.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
-
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
     NgxGalleryModule,
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     FileUploadModule,  
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   exports: [
     NavComponent,
@@ -51,7 +51,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
     FileUploadModule,
     TextInputComponent,
     BsDatepickerModule,
-    DatePickerComponent
+    DatePickerComponent,
+    PaginationModule
   ]
 })
 export class SharedModule { }
