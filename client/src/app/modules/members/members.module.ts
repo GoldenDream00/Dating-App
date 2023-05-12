@@ -18,7 +18,6 @@ import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
   imports: [
     CommonModule,
     SharedModule,
-    
   ],
   exports: [
     MemberDetailComponent,

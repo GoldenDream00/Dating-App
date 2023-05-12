@@ -14,6 +14,8 @@ import { TextInputComponent } from './components/text-input/text-input.component
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { IntlModule } from 'angular-ecmascript-intl';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     FileUploadModule,  
     BsDatepickerModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
+    IntlModule
   ],
   exports: [
     NavComponent,
@@ -52,7 +56,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     TextInputComponent,
     BsDatepickerModule,
     DatePickerComponent,
-    PaginationModule
+    PaginationModule,
+    ButtonsModule,
+    IntlModule
   ]
 })
 export class SharedModule { }
