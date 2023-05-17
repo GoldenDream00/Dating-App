@@ -45,21 +45,21 @@ export class MembersService {
     return;
   }
 
-  getMembers(userParams: UserParams) {
-    const response = this.memberCache.get(Object.values(userParams).join('-'));
+  getMembers() {
+    const response = this.memberCache.get(Object.values(this.userParams).join('-'));
 
     if (response) return of(response);
 
-    let params = this.getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
+    let params = this.getPaginationHeaders(this.userParams.pageNumber, this.userParams.pageSize);
 
-    params = params.append('minAge', userParams.minAge);
-    params = params.append('maxAge', userParams.maxAge);
-    params = params.append('gender', userParams.gender);
-    params = params.append('orderBy', userParams.orderBy);
+    params = params.append('minAge', this.userParams.minAge);
+    params = params.append('maxAge', this.userParams.maxAge);
+    params = params.append('gender', this.userParams.gender);
+    params = params.append('orderBy', this.userParams.orderBy);
 
     return this.getPaginatedResult<Member[]>(this.baseUrl + 'users', params).pipe(
       map(response => {
-        this.memberCache.set(Object.values(userParams).join('-'), response);
+        this.memberCache.set(Object.values(this.userParams).join('-'), response);
         return response;
       })
     );
@@ -112,6 +112,7 @@ export class MembersService {
     const member = [...this.memberCache.values()]
       .reduce((arr, elem) => arr.concat(elem.result), [])
       .find((member: Member) => member.userName === username);
+      
     if (member) return of(member);
     return this.http.get<Member>(`${this.baseUrl}users/${username}`);
   }
