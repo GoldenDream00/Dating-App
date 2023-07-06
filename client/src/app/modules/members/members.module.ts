@@ -22,6 +22,7 @@ import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
   exports: [
     MemberDetailComponent,
     MemberListComponent,
+    MemberCardComponent
   ]
 })
 export class MembersModule { }

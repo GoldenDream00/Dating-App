@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListsComponent } from './lists.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MemberCardComponent } from '../members/member-card/member-card.component';
+import { MembersModule } from '../members/members.module';
 
 
 
@@ -9,7 +12,9 @@ import { ListsComponent } from './lists.component';
     ListsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    MembersModule
   ],
   exports: [
     ListsComponent
