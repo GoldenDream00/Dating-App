@@ -52,13 +52,13 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateUser(MemberUpdateDTO memberUpdateDTO)
+        public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
         {
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
             if (user == null) return NotFound();
 
-            _mapper.Map(memberUpdateDTO, user);
+            _mapper.Map(memberUpdateDto, user);
 
             if (await _userRepository.SaveAllAsync()) return NoContent();
 
